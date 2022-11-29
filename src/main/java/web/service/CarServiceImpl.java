@@ -15,7 +15,7 @@ import java.util.List;
 public class CarServiceImpl implements CarService{
 
     @Autowired
-    CarDao carDao;
+    private CarDao carDao;
 
     public List<Car> getCarListOnCount(Integer countCars) {
         return carDao.getCarListOnCount(countCars);
