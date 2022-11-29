@@ -16,16 +16,8 @@ public class CarServiceImpl implements CarService{
 
     @Autowired
     CarDao carDao;
-    @Override
-    public List<Car> getCarList() {
-        return carDao.getCars();
-    }
 
     public List<Car> getCarListOnCount(Integer countCars) {
-        List<Car> list = getCarList();
-        if (countCars == null || countCars < 0 || countCars > list.size()) {
-            countCars = list.size();
-        }
-        return list.stream().limit(countCars).toList();
+        return carDao.getCarListOnCount(countCars);
     }
 }

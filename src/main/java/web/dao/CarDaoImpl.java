@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class CarDaoImpl implements CarDao{
 
-    static List<Car> carList;
+    private static List<Car> carList;
     static {
         carList = new ArrayList<>();
         carList.add(new Car("model1", "color1", 101));
@@ -24,5 +24,14 @@ public class CarDaoImpl implements CarDao{
     @Override
     public List<Car> getCars() {
         return carList;
+    }
+
+    @Override
+    public List<Car> getCarListOnCount(Integer countCars) {
+        List<Car> list = getCars();
+        if (countCars == null || countCars < 0 || countCars > list.size()) {
+            countCars = list.size();
+        }
+        return list.stream().limit(countCars).toList();
     }
 }
